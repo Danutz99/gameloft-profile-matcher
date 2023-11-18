@@ -1,7 +1,9 @@
 package gameloft.interview.profilematcher.player;
 
+import java.util.Optional;
+
 public interface PlayerService {
 
-  public Player findPlayerById(String playerId);
+  public Optional<Player> findPlayerById(String playerId);
   
 }
