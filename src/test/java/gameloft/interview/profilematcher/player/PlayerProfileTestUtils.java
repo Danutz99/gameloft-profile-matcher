@@ -1,14 +1,8 @@
 package gameloft.interview.profilematcher.player;
 
-import java.time.OffsetDateTime;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import gameloft.interview.profilematcher.util.OffsetDateTimeDeserializer;
+import gameloft.interview.profilematcher.util.JacksonJsonMapper;
 
 public class PlayerProfileTestUtils {
 
@@ -56,14 +50,9 @@ public class PlayerProfileTestUtils {
 
   public static PlayerProfile deserializePlayerProfile(String playerProfileJson) {
 
-    ObjectMapper mapper = new ObjectMapper();
-    mapper.registerModule(new JavaTimeModule());
-    mapper.registerModule(new SimpleModule().addDeserializer(OffsetDateTime.class, new OffsetDateTimeDeserializer()));
-    mapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
-
     PlayerProfile playerProfile;
     try {
-      playerProfile = mapper.readValue(playerProfileJson, PlayerProfile.class);
+      playerProfile = JacksonJsonMapper.jsonMapper.readValue(playerProfileJson, PlayerProfile.class);
     } catch (JsonMappingException e) {
       throw new RuntimeException(e);
     } catch (JsonProcessingException e) {
