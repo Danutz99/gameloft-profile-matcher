@@ -1,5 +1,10 @@
 package gameloft.interview.profilematcher.player;
 
-public record Inventory(int cash, int coins, int item_1, int item_34, int item_55) {
+import org.springframework.data.mongodb.core.mapping.Field;
+
+public record Inventory(int cash, int coins,
+    @Field(value = "item_1") int item1,
+    @Field(value = "item_34") int item34,
+    @Field(value = "item_55") int item55) {
 
 }

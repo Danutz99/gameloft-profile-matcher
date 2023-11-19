@@ -1,5 +1,9 @@
 package gameloft.interview.profilematcher.player;
 
-public record Matchers(Level level, Matcher has, Matcher doesNotHave) {
+import org.springframework.data.mongodb.core.mapping.Field;
+
+public record Matchers(Level level, Matcher has, 
+    @Field(value = "does_not_have")
+    Matcher doesNotHave) {
 
 }
