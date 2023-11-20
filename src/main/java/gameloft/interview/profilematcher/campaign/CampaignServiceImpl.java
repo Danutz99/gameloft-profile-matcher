@@ -29,10 +29,10 @@ public class CampaignServiceImpl implements CampaignService {
        "items": ["item_4"]
        }
        },
-       "start_date": "2022-01-25T00:00:00Z",
-       "end_date": "2022-02-25T00:00:00Z",
+       "start_date": "2022-01-25 00:00:00Z",
+       "end_date": "2022-02-25 00:00:00Z",
        "enabled": true,
-       "last_updated": "2021-07-13T11:46:58Z"
+       "last_updated": "2021-07-13 11:46:58Z"
       }
             """;
 

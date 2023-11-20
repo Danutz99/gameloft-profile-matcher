@@ -14,13 +14,13 @@ public class PlayerProfileServiceImpl implements PlayerProfileService {
             {
         "player_id": "97983be2-98b7-11e7-90cf-082e5f28d836",
         "credential": "apple_credential",
-        "created": "2021-01-10T13:37:17Z",
-        "modified": "2021-01-23T13:37:17Z",
-        "last_session": "2021-01-23T13:37:17Z",
+        "created": "2021-01-10 13:37:17Z",
+        "modified": "2021-01-23 13:37:17Z",
+        "last_session": "2021-01-23 13:37:17Z",
         "total_spent": 400,
         "total_refund": 0,
         "total_transactions": 5,
-        "last_purchase": "2021-01-22T13:37:17Z",
+        "last_purchase": "2021-01-22 13:37:17Z",
         "active_campaigns": [],
         "devices": [{
                 "id": 1,
@@ -34,7 +34,7 @@ public class PlayerProfileServiceImpl implements PlayerProfileService {
         "total_playtime": 144,
         "country": "CA",
         "language": "fr",
-        "birthdate": "2000-01-10T13:37:17Z",
+        "birthdate": "2000-01-10 13:37:17Z",
         "gender": "male",
         "inventory": {
             "cash": 123,
