@@ -7,7 +7,6 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import gameloft.interview.profilematcher.util.DateToOffsetDateTimeConverter;
-import gameloft.interview.profilematcher.util.OffsetDateTimeCodec;
 import gameloft.interview.profilematcher.util.OffsetDateTimeToDateConverter;
 import org.bson.codecs.DocumentCodec;
 import org.bson.codecs.configuration.CodecRegistries;
