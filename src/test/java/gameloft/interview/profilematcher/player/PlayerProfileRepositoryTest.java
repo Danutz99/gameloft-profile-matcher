@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import gameloft.interview.profilematcher.app.ProfileMatcherApplication;
+import gameloft.interview.profilematcher.ProfileMatcherApplication;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;

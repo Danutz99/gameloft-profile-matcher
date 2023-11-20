@@ -1,4 +1,4 @@
-package gameloft.interview.profilematcher.app;
+package gameloft.interview.profilematcher.database;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;

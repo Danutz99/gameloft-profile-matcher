@@ -3,7 +3,7 @@ package gameloft.interview.profilematcher.player;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.mongodb.client.MongoClient;
-import gameloft.interview.profilematcher.app.SimpleMongoConfig;
+import gameloft.interview.profilematcher.database.SimpleMongoConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
