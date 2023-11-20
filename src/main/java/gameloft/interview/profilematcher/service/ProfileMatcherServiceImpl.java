@@ -8,17 +8,19 @@ import gameloft.interview.profilematcher.player.Campaign;
 import gameloft.interview.profilematcher.player.Matcher;
 import gameloft.interview.profilematcher.player.PlayerProfile;
 import gameloft.interview.profilematcher.player.PlayerProfileService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProfileMatcherServiceImpl implements ProfileMatcherService {
 
-  @Autowired
   private PlayerProfileService playerProfileService;
 
-  @Autowired
   private CampaignService campaignService;
+
+  public ProfileMatcherServiceImpl(PlayerProfileService playerProfileService, CampaignService campaignService) {
+    this.playerProfileService = playerProfileService;
+    this.campaignService = campaignService;
+  }
 
   @Override
   public PlayerProfile getPlayerProfile(String playerId) {
@@ -33,7 +35,8 @@ public class ProfileMatcherServiceImpl implements ProfileMatcherService {
   }
 
   @Override
-  public PlayerProfile matchPlayerProfileWithActiveCampaigns(PlayerProfile playerProfile, List<Campaign> activeCampaigns) {
+  public PlayerProfile matchPlayerProfileWithActiveCampaigns(PlayerProfile playerProfile,
+      List<Campaign> activeCampaigns) {
     activeCampaigns.forEach(c -> {
       if (playerMatchesCampaignConditions(playerProfile, c)) {
         playerProfile.activeCampaigns().add(c);
@@ -50,10 +53,10 @@ public class ProfileMatcherServiceImpl implements ProfileMatcherService {
     Matcher hasMatcher = campaign.matchers().has();
     if (hasMatcher.country().indexOf(playerProfile.country()) != -1
     //        && hasMatcher.items().indexOf(playerProfile.inventory())
-        ) {
+    ) {
       return true;
     }
-    
+
     return false;
   }
 

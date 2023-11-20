@@ -16,6 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+@Tag("spring")
 @Tag("integration")
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ProfileMatcherApplication.class)

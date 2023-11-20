@@ -8,7 +8,10 @@ import gameloft.interview.profilematcher.campaign.CampaignService;
 import gameloft.interview.profilematcher.campaign.CampaignServiceImpl;
 import gameloft.interview.profilematcher.player.Campaign;
 import gameloft.interview.profilematcher.player.PlayerProfile;
+import gameloft.interview.profilematcher.player.PlayerProfileService;
+import gameloft.interview.profilematcher.player.PlayerProfileServiceTest;
 import gameloft.interview.profilematcher.player.PlayerProfileTestUtils;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class ProfileMatcherServiceTest {
@@ -18,9 +21,25 @@ public class ProfileMatcherServiceTest {
     PlayerProfile playerProfile = PlayerProfileTestUtils.getPlayerProfile();
     CampaignService campaignService = new CampaignServiceImpl();
     List<Campaign> activeCampaigns = campaignService.getActiveCampaigns();
-    ProfileMatcherService profileMatcherService = new ProfileMatcherServiceImpl();
-    PlayerProfile updatedPlayerProfile =  profileMatcherService.matchPlayerProfileWithActiveCampaigns(playerProfile, activeCampaigns);
+    ProfileMatcherService profileMatcherService = new ProfileMatcherServiceImpl(null, null);
+    PlayerProfile updatedPlayerProfile = profileMatcherService.matchPlayerProfileWithActiveCampaigns(playerProfile,
+      activeCampaigns);
     assertThat(updatedPlayerProfile.activeCampaigns()).hasSize(1);
     assertThat(updatedPlayerProfile.activeCampaigns().get(0).name()).isEqualTo("mycampaign");
+  }
+
+  @Tag("integration")
+  @Test
+  void testGetPlayerProfile() {
+    ProfileMatcherService profileMatcherService = setupProfileMatcherService();
+    PlayerProfile playerProfile = profileMatcherService.getPlayerProfile("97983be2-98b7-11e7-90cf-082e5f28d836");
+    assertThat(playerProfile.activeCampaigns()).hasSize(1);
+    assertThat(playerProfile.activeCampaigns().get(0).name()).isEqualTo("mycampaign");
+  }
+
+  private static ProfileMatcherService setupProfileMatcherService() {
+    PlayerProfileService playerProfileService = PlayerProfileServiceTest.setupPlayerProfileService();
+    CampaignService campaignService = new CampaignServiceImpl();
+    return new ProfileMatcherServiceImpl(playerProfileService, campaignService);
   }
 }

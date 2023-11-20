@@ -12,7 +12,7 @@ public class PlayerProfileServiceTest {
 
   private static final PlayerProfileService playerProfileService = setupPlayerProfileService();
 
-  private static PlayerProfileService setupPlayerProfileService() {
+  public static PlayerProfileService setupPlayerProfileService() {
     MongoTemplate mongoTemplate = MongoConfig.createMongoTemplateFromDefaults();
     PlayerProfileRepository playerProfileRepository = new PlayerProfileRepositoryImpl(mongoTemplate);
     return new PlayerServiceImpl(playerProfileRepository);
