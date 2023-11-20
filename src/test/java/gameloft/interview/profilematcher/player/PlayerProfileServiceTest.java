@@ -2,20 +2,19 @@ package gameloft.interview.profilematcher.player;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.mongodb.client.MongoClient;
-import gameloft.interview.profilematcher.database.SimpleMongoConfig;
+import gameloft.interview.profilematcher.database.MongoConfig;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+@Tag("integration")
 public class PlayerProfileServiceTest {
 
   PlayerProfileService playerProfileService = setupPlayerProfileService();
 
   private PlayerProfileService setupPlayerProfileService() {
-    MongoClient mongoClient = SimpleMongoConfig.createMongoClient("mongodb://localhost:27017/profile-matcher");
-    MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, "profile-matcher");
+    MongoTemplate mongoTemplate = MongoConfig.createMongoTemplateFromDefaults();
     PlayerProfileRepository playerProfileRepository = new PlayerProfileRepositoryImpl(mongoTemplate);
-
     return new PlayerServiceImpl(playerProfileRepository);
   }
 
