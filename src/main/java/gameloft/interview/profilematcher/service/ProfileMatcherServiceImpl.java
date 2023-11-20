@@ -3,10 +3,10 @@ package gameloft.interview.profilematcher.service;
 import java.util.List;
 import java.util.Optional;
 
+import gameloft.interview.profilematcher.campaign.Campaign;
 import gameloft.interview.profilematcher.campaign.CampaignService;
-import gameloft.interview.profilematcher.player.Campaign;
+import gameloft.interview.profilematcher.campaign.Matcher;
 import gameloft.interview.profilematcher.player.Inventory;
-import gameloft.interview.profilematcher.player.Matcher;
 import gameloft.interview.profilematcher.player.PlayerProfile;
 import gameloft.interview.profilematcher.player.PlayerProfileService;
 import org.springframework.stereotype.Component;

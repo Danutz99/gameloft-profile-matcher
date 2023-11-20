@@ -1,4 +1,4 @@
-package gameloft.interview.profilematcher.player;
+package gameloft.interview.profilematcher.campaign;
 
 import java.util.List;
 

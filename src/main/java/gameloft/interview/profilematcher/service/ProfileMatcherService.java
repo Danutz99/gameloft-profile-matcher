@@ -2,7 +2,7 @@ package gameloft.interview.profilematcher.service;
 
 import java.util.List;
 
-import gameloft.interview.profilematcher.player.Campaign;
+import gameloft.interview.profilematcher.campaign.Campaign;
 import gameloft.interview.profilematcher.player.PlayerProfile;
 
 public interface ProfileMatcherService {

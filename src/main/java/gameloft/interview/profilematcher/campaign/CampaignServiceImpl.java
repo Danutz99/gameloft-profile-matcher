@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import gameloft.interview.profilematcher.player.Campaign;
 import gameloft.interview.profilematcher.util.JacksonJsonMapper;
 import org.springframework.stereotype.Component;
 

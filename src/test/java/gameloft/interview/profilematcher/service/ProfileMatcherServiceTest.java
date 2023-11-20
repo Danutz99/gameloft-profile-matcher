@@ -4,9 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
+import gameloft.interview.profilematcher.campaign.Campaign;
 import gameloft.interview.profilematcher.campaign.CampaignService;
 import gameloft.interview.profilematcher.campaign.CampaignServiceImpl;
-import gameloft.interview.profilematcher.player.Campaign;
 import gameloft.interview.profilematcher.player.PlayerProfile;
 import gameloft.interview.profilematcher.player.PlayerProfileService;
 import gameloft.interview.profilematcher.player.PlayerProfileServiceImpl;
