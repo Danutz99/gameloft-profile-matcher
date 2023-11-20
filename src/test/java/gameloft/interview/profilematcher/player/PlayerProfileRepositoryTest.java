@@ -23,7 +23,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class PlayerProfileRepositoryTest {
 
-  @MockBean
+  @MockBean(value = PlayerProfileRepositoryImpl.class)
   private PlayerProfileRepository playerProfileRepository;
 
   @Test
