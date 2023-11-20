@@ -15,7 +15,7 @@ public class PlayerProfileServiceTest {
   public static PlayerProfileService setupPlayerProfileService() {
     MongoTemplate mongoTemplate = MongoConfig.createMongoTemplateFromDefaults();
     PlayerProfileRepository playerProfileRepository = new PlayerProfileRepositoryImpl(mongoTemplate);
-    return new PlayerServiceImpl(playerProfileRepository);
+    return new PlayerProfileServiceImpl(playerProfileRepository);
   }
 
   @Test
@@ -26,7 +26,7 @@ public class PlayerProfileServiceTest {
 
   @Test
   void testSavePlayerProfile() {
-    PlayerProfile playerProfile = PlayerProfileTestUtils.getPlayerProfile();
+    PlayerProfile playerProfile = PlayerProfileServiceImpl.getPlayerProfile();
     PlayerProfile playerProfileUpdate = playerProfileService.save(playerProfile);
     assertThat(playerProfileUpdate).isNotNull();
   }

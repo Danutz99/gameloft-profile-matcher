@@ -1,10 +1,14 @@
 package gameloft.interview.profilematcher.player;
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import gameloft.interview.profilematcher.util.JacksonJsonMapper;
+import org.springframework.stereotype.Component;
 
-public class PlayerProfileTestUtils {
+@Component
+public class PlayerProfileServiceImpl implements PlayerProfileService {
 
   private static String playerProfileJson = """
             {
@@ -48,8 +52,7 @@ public class PlayerProfileTestUtils {
 
             """;
 
-  public static PlayerProfile deserializePlayerProfile(String playerProfileJson) {
-
+  private static PlayerProfile deserializePlayerProfile(String playerProfileJson) {
     PlayerProfile playerProfile;
     try {
       playerProfile = JacksonJsonMapper.jsonMapper.readValue(playerProfileJson, PlayerProfile.class);
@@ -63,6 +66,31 @@ public class PlayerProfileTestUtils {
 
   public static PlayerProfile getPlayerProfile() {
     return deserializePlayerProfile(playerProfileJson);
+  }
+
+  PlayerProfileRepository playerProfileRepository;
+
+  public PlayerProfileServiceImpl(PlayerProfileRepository playerProfileRepository) {
+    this.playerProfileRepository = playerProfileRepository;
+    savePlayerProfileIfNeeded();
+  }
+
+  private void savePlayerProfileIfNeeded() {
+    PlayerProfile defaultPlayerProfile = getPlayerProfile();
+    Optional<PlayerProfile> existingPlayerProfile = playerProfileRepository.findById(defaultPlayerProfile.playerId());
+    if (existingPlayerProfile.isEmpty()) {
+      playerProfileRepository.save(defaultPlayerProfile);
+    }
+  }
+
+  @Override
+  public Optional<PlayerProfile> findById(String playerId) {
+    return playerProfileRepository.findById(playerId);
+  }
+
+  @Override
+  public PlayerProfile save(PlayerProfile playerProfile) {
+    return playerProfileRepository.save(playerProfile);
   }
 
 }

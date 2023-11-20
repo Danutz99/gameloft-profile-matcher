@@ -9,8 +9,8 @@ import gameloft.interview.profilematcher.campaign.CampaignServiceImpl;
 import gameloft.interview.profilematcher.player.Campaign;
 import gameloft.interview.profilematcher.player.PlayerProfile;
 import gameloft.interview.profilematcher.player.PlayerProfileService;
+import gameloft.interview.profilematcher.player.PlayerProfileServiceImpl;
 import gameloft.interview.profilematcher.player.PlayerProfileServiceTest;
-import gameloft.interview.profilematcher.player.PlayerProfileTestUtils;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ public class ProfileMatcherServiceTest {
 
   @Test
   void testMatchPlayerProfileWithActiveCampaigns() {
-    PlayerProfile playerProfile = PlayerProfileTestUtils.getPlayerProfile();
+    PlayerProfile playerProfile = PlayerProfileServiceImpl.getPlayerProfile();
     CampaignService campaignService = new CampaignServiceImpl();
     List<Campaign> activeCampaigns = campaignService.getActiveCampaigns();
     ProfileMatcherService profileMatcherService = new ProfileMatcherServiceImpl(null, null);

@@ -28,7 +28,7 @@ public class PlayerProfileRepositoryTest {
 
   @Test
   void testFindById() throws JsonMappingException, JsonProcessingException {
-    PlayerProfile playerProfile = PlayerProfileTestUtils.getPlayerProfile();
+    PlayerProfile playerProfile = PlayerProfileServiceImpl.getPlayerProfile();
 
     Mockito.when(playerProfileRepository.findById(playerProfile.playerId()))
       .thenReturn(Optional.of(playerProfile));
