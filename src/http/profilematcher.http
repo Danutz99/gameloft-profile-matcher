@@ -1,0 +1,5 @@
+@baseApiUrl=http://localhost:8080/api/profilematcher
+
+@playerId = 97983be2-98b7-11e7-90cf-082e5f28d836
+
+GET {{baseApiUrl}}/get_client_config/{{playerId}}
