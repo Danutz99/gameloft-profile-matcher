@@ -28,6 +28,12 @@ public class ProfileMatcherServiceImpl implements ProfileMatcherService {
     }
     PlayerProfile playerProfile = playerProfileOptional.get();
     List<Campaign> activeCampaigns = campaignService.getActiveCampaigns();
+    playerProfile = matchPlayerProfileWithActiveCampaigns(playerProfile, activeCampaigns);
+    return playerProfile;
+  }
+
+  @Override
+  public PlayerProfile matchPlayerProfileWithActiveCampaigns(PlayerProfile playerProfile, List<Campaign> activeCampaigns) {
     activeCampaigns.forEach(c -> {
       if (playerMatchesCampaignConditions(playerProfile, c)) {
         playerProfile.activeCampaigns().add(c);

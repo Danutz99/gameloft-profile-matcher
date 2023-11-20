@@ -10,9 +10,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 @Tag("integration")
 public class PlayerProfileServiceTest {
 
-  PlayerProfileService playerProfileService = setupPlayerProfileService();
+  private static final PlayerProfileService playerProfileService = setupPlayerProfileService();
 
-  private PlayerProfileService setupPlayerProfileService() {
+  private static PlayerProfileService setupPlayerProfileService() {
     MongoTemplate mongoTemplate = MongoConfig.createMongoTemplateFromDefaults();
     PlayerProfileRepository playerProfileRepository = new PlayerProfileRepositoryImpl(mongoTemplate);
     return new PlayerServiceImpl(playerProfileRepository);
