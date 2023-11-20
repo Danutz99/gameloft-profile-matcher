@@ -40,7 +40,7 @@ public class ProfileMatcherServiceImpl implements ProfileMatcherService {
       List<Campaign> activeCampaigns) {
     activeCampaigns.forEach(c -> {
       if (playerMatchesCampaignConditions(playerProfile, c)) {
-        playerProfile.activeCampaigns().add(c);
+        playerProfile.activeCampaigns().add(c.name());
       }
     });
     return playerProfile;

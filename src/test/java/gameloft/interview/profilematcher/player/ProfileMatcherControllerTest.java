@@ -33,7 +33,7 @@ public class ProfileMatcherControllerTest {
     PlayerProfile playerProfile = profileMatcherController.getPlayerProfile(playerId).getBody();
     assertThat(playerProfile.playerId()).isEqualTo(playerId);
     assertThat(playerProfile.activeCampaigns()).hasSize(1);
-    assertThat(playerProfile.activeCampaigns().get(0).name()).isEqualTo("mycampaign");
+    assertThat(playerProfile.activeCampaigns().get(0)).isEqualTo("mycampaign");
   }
 
 }

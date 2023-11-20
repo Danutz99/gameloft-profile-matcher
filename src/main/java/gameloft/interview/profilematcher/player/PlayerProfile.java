@@ -28,7 +28,7 @@ public record PlayerProfile(
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     @Field(value = "last_purchase")
     OffsetDateTime lastPurchase,
-    @Field(value = "active_campaigns") List<Campaign> activeCampaigns, List<Device> devices, int level, int xp,
+    @Field(value = "active_campaigns") List<String> activeCampaigns, List<Device> devices, int level, int xp,
     @Field(value = "total_playtime") int totalPlaytime, String country, String language,
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     OffsetDateTime birthdate,

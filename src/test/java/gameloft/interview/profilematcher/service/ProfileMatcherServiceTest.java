@@ -25,7 +25,7 @@ public class ProfileMatcherServiceTest {
     PlayerProfile updatedPlayerProfile = profileMatcherService.matchPlayerProfileWithActiveCampaigns(playerProfile,
       activeCampaigns);
     assertThat(updatedPlayerProfile.activeCampaigns()).hasSize(1);
-    assertThat(updatedPlayerProfile.activeCampaigns().get(0).name()).isEqualTo("mycampaign");
+    assertThat(updatedPlayerProfile.activeCampaigns().get(0)).isEqualTo("mycampaign");
   }
 
   @Tag("integration")
@@ -34,7 +34,7 @@ public class ProfileMatcherServiceTest {
     ProfileMatcherService profileMatcherService = setupProfileMatcherService();
     PlayerProfile playerProfile = profileMatcherService.getPlayerProfile("97983be2-98b7-11e7-90cf-082e5f28d836");
     assertThat(playerProfile.activeCampaigns()).hasSize(1);
-    assertThat(playerProfile.activeCampaigns().get(0).name()).isEqualTo("mycampaign");
+    assertThat(playerProfile.activeCampaigns().get(0)).isEqualTo("mycampaign");
   }
 
   private static ProfileMatcherService setupProfileMatcherService() {
