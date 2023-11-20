@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import gameloft.interview.profilematcher.campaign.CampaignService;
 import gameloft.interview.profilematcher.player.Campaign;
+import gameloft.interview.profilematcher.player.Inventory;
 import gameloft.interview.profilematcher.player.Matcher;
 import gameloft.interview.profilematcher.player.PlayerProfile;
 import gameloft.interview.profilematcher.player.PlayerProfileService;
@@ -46,18 +47,28 @@ public class ProfileMatcherServiceImpl implements ProfileMatcherService {
   }
 
   private boolean playerMatchesCampaignConditions(PlayerProfile playerProfile, Campaign campaign) {
-    if (playerProfile.level() >= campaign.matchers().level().min()
-        && playerProfile.level() <= campaign.matchers().level().max()) {
+    if (isLevelInRange(playerProfile.level(), campaign.matchers().level().min(), campaign.matchers().level().max())) {
       return true;
     }
     Matcher hasMatcher = campaign.matchers().has();
-    if (hasMatcher.country().indexOf(playerProfile.country()) != -1
-    //        && hasMatcher.items().indexOf(playerProfile.inventory())
-    ) {
+    if (matchesCountry(playerProfile.country(), hasMatcher.country())
+        && matchesItems(playerProfile.inventory(), hasMatcher.items())) {
       return true;
     }
-
-    return false;
+    Matcher doesNotHaveMatcher = campaign.matchers().doesNotHave();
+    return !(matchesCountry(playerProfile.country(), doesNotHaveMatcher.country())
+        && matchesItems(playerProfile.inventory(), doesNotHaveMatcher.items()));
   }
 
+  private boolean isLevelInRange(int level, int min, int max) {
+    return level >= min && level <= max;
+  }
+
+  private boolean matchesCountry(String playerCountry, List<String> countryList) {
+    return countryList == null || countryList.isEmpty() || countryList.contains(playerCountry);
+  }
+
+  private boolean matchesItems(Inventory inventory, List<String> itemList) {
+    return itemList == null || itemList.isEmpty() || itemList.stream().allMatch(inventory::hasItem);
+  }
 }
